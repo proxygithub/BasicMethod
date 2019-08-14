@@ -1,10 +1,4 @@
-//
-//  Util.swift
-//  Reachout
-//
-//  Created by etech13 on 14/06/17.
-//  Copyright © 2017 etech13. All rights reserved.
-//
+
 
 import UIKit
 import SVGKit
