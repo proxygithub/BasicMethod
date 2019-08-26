@@ -29,6 +29,22 @@ class Util: NSObject  {
     static var trueFalseCompletion : trueFalseBlock = { successFail in }
     static var ImageDownloaderCompletion : ImageDownloaderBlock = { img , identifier in }
     
+    //MARK: Kingfisher Image doanload
+    static func setImageToImageview(imageToSet: UIImageView, withImageURL: String, withPlaceHolder:UIImage) {
+        
+        imageToSet.image = withPlaceHolder
+        let url = URL(string: withImageURL)        
+        
+        imageToSet.kf.setImage(with: url, placeholder: withPlaceHolder, options: [.transition(.fade(0.0))], progressBlock: nil, completionHandler: { (img, err, type, url) in
+            
+            if err != nil || img == nil {
+                imageToSet.kf.indicatorType = .none
+                imageToSet.image = withPlaceHolder
+                print("Problem in caching image")
+            }
+        })        
+    }
+    
     //MARK:- UI Functions.
     
     static func gotoRecordScreen(_ fromViewController: UIViewController) {
